@@ -30,15 +30,21 @@ function drop(ev) {
 
 function checkStatus() {
     if (guessing.includes(0) == false){
-        numberOfRowsCompleted += 1;
-        let numberOfRowToActivate = numberOfRowsCompleted + 1;
-        ActivateRow(numberOfRowToActivate);
-        if (numberOfRowsCompleted > 0){
-            DesactivateRow(numberOfRowsCompleted);
+        if (guessing == code){
+            alert('WIN');
+        } else if (numberOfRowsCompleted == 10) {
+                alert('LOOSE');
+            } else {
+                numberOfRowsCompleted += 1;
+                let numberOfRowToActivate = numberOfRowsCompleted + 1;
+                ActivateRow(numberOfRowToActivate);
+                if (numberOfRowsCompleted > 0){
+                DesactivateRow(numberOfRowsCompleted);
+                }
+            } 
+            guessing = [0,0,0,0]
         }
-        guessing = [0,0,0,0]
     }
-}
 
 function ActivateRow(Number) {
     let RowToActivate = document.getElementById(Number);
