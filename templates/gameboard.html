@@ -25,12 +25,12 @@
             </div>
             <div class="container w-30" id="decoding-board">
                 <div class="row">
-                    <div class="col-10">
-                        {% for i in range(1,11) %}
+                    <div class="col-10 rounded">
+                        {% for i in range(10,0,-1) %}
                         <div class='row' id='{{ i }}'>
                             {% for n in range (1,5) %}
-                                <div  class="col-3 column text-center p-2" id = "guess_{{ i }}{{ n }} ">
-                                    <i class="far fa-circle fa-3x"></i>
+                                <div  class="col-3 column text-center p-2">
+                                    <i class="far fa-circle fa-3x" id = "guess_{{ i }}{{ n }}"></i>
                                 </div>
                             {% endfor %}
                         </div>
@@ -38,7 +38,7 @@
                     </div>
 
                     <div class="col-2">
-                        {% for i in range(1,11) %}
+                        {% for i in range(10,0,-1) %}
                         <div class="row pt-2 pb-2">
                             {% for i in range(1,3) %}
                                 <!-- <div class="row pt-2"> -->
@@ -56,12 +56,12 @@
 
                 </div>
                 <div class="row pt-4">
-                        <div  class='col-2' id = "red"><i class="fas fa-circle fa-3x"></i></div>
-                        <div  class='col-2' id = "orange"><i class="fas fa-circle fa-3x"></i></div>
-                        <div  class='col-2' id = "yellow"><i class="fas fa-circle fa-3x"></i></div>
-                        <div  class='col-2' id = "green"><i class="fas fa-circle fa-3x"></i></div>
-                        <div  class='col-2' id = "blue"><i class="fas fa-circle fa-3x"></i></div>
-                        <div  class='col-2' id = "violet"><i class="fas fa-circle fa-3x"></i></div>
+                        <div  class='col-2' id = "red" draggable="true" ondragstart="drag(event)" data-color="red"><i class="fas fa-circle fa-3x"></i></div>
+                        <div  class='col-2' id = "orange" draggable="true" ondragstart="drag(event)" data-color="orange"><i class="fas fa-circle fa-3x"></i></div>
+                        <div  class='col-2' id = "yellow" draggable="true" ondragstart="drag(event)" data-color="yellow"><i class="fas fa-circle fa-3x"></i></div>
+                        <div  class='col-2' id = "green" draggable="true" ondragstart="drag(event)" data-color="green"><i class="fas fa-circle fa-3x"></i></div>
+                        <div  class='col-2' id = "blue" draggable="true" ondragstart="drag(event)" data-color="blue"><i class="fas fa-circle fa-3x"></i></div>
+                        <div  class='col-2' id = "violet" draggable="true" ondragstart="drag(event)" data-color="purple"><i class="fas fa-circle fa-3x"></i></div>
                 </div>
 
                     
