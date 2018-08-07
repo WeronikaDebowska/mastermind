@@ -1,4 +1,6 @@
-var numberOfFilledHoles = 0;
+var numberOfRowsCompleted = 0;
+var guessing = [0,0,0,0]
+var code = [1,2,4,6]
 ActivateRow(1)
 
 function allowDrop(ev) {
@@ -11,29 +13,31 @@ function drag(ev) {
 
 function drop(ev) {
     ev.preventDefault();
-    let data = ev.dataTransfer.getData("text"); //dragged pegs
-    let guess = ev.target;                      //state after peg drop
-    guess.style.color = data.toString();
+
+    var idOfPegDragged = ev.dataTransfer.getData("text"); //dragged pegs
+    var pegDragged = document.getElementById(idOfPegDragged);
+    var ColorDragged = pegDragged.style.color;
+    
+    var guess = ev.target;                      //state after peg drop
+    guess.style.color = ColorDragged;
     guess.className = "fas fa-circle fa-3x";
-    numberOfFilledHoles += 1;
+    
+    var index = Number(guess.id.slice(-1))-1;
+    guessing[index] = idOfPegDragged;
+    console.log(guessing);
     checkStatus()
 }
 
 function checkStatus() {
-    if (numberOfFilledHoles % 4 == 0){
-        alert('time for chsanging a row')
-        let numberOfRowCompleted = numberOfFilledHoles / 4;
-        console.log(numberOfRowCompleted)
-        let numberOfRowToActivate = numberOfRowCompleted + 1;
-        console.log(numberOfRowToActivate)
+    if (guessing.includes(0) == false){
+        numberOfRowsCompleted += 1;
+        let numberOfRowToActivate = numberOfRowsCompleted + 1;
         ActivateRow(numberOfRowToActivate);
-        DesactivateRow(numberOfRowCompleted);
-
+        if (numberOfRowsCompleted > 0){
+            DesactivateRow(numberOfRowsCompleted);
+        }
+        guessing = [0,0,0,0]
     }
-}
-
-function checkIfEnd() {
-    checkIfGuessed();
 }
 
 function ActivateRow(Number) {
@@ -50,7 +54,9 @@ function ActivateRow(Number) {
 }
 
 function DesactivateRow(Number) {
+    console.log(Number)
     let RowToActivate = document.getElementById(Number);
+    console.log('TU',RowToActivate);
     let holesToActivate = RowToActivate.children;
     let ArrayOfHoles = Array.from(holesToActivate);
     ArrayOfHoles.forEach( function (hole){
