@@ -1,0 +1,86 @@
+/* body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-color: white;
+    word-wrap: break-word;
+    white-space: normal;
+    
+}
+
+.container {
+    width: 
+    margin: 0 auto;
+} */
+
+#gameboard {
+    /* width: 250px; */
+    background-color: lightgrey;
+    /* border: black 3px;
+    align-items: center;
+    align-content: center;
+    margin: auto; */
+}
+
+/* .decoding-board {
+    width: 80%;
+    float: left;
+}
+
+.aside-board {
+    width: 15%;
+    float: right;
+
+}
+
+*/
+
+.column
+{ 
+    /* display: table-cell; */
+    background-color: #696969;
+
+    /* text-align: center; */
+    /* border-radius: 15px;
+    width: 30px;
+    height: 30px; */
+}
+
+#covered {
+    background-color: aqua;
+
+}
+
+/* #pegs-box {
+    clear: both;
+    width: 300px;
+    border-spacing: 10px;
+    align-items: center; */
+    /* align-content: center; */
+    /* margin: auto;
+
+} */
+
+#red {
+    color: red;
+}
+
+#orange {
+    color: orange;
+}
+
+#yellow {
+    color: yellow;
+}
+
+#green {
+    color: green;
+}
+
+#blue {
+    color: blue;
+}
+
+#violet {
+    color: purple;
+}

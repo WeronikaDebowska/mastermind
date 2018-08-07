@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>MasterMind</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <div class="outer-container">
+        <div id="gameboard">
+        
+            <div class="covered" class="Row">
+
+            </div>
+            <div class="container" id="decoding-board">
+                {% for i in range(1,11) %}
+                    <div class='row' id='{{ i }}'>
+                        {% for n in range (1,5) %}
+                            <div  class="col-3 column text-center" id = "{{ i }}{{ n }} ">
+                                <i class="far fa-circle fa-3x"></i>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                {% endfor %}
+                    
+            </div>
+
+            <div class='aside-board'>
+
+            </div>
+
+        </div>
+
+        <div id="pegs-box">
+            <div  class='peg' id = "red"><i class="fas fa-circle fa-3x"></i></div>
+            <div  class='peg' id = "orange"><i class="fas fa-circle fa-3x"></i></div>
+            <div  class='peg' id = "yellow"><i class="fas fa-circle fa-3x"></i></div>
+            <div  class='peg' id = "green"><i class="fas fa-circle fa-3x"></i></div>
+            <div  class='peg' id = "blue"><i class="fas fa-circle fa-3x"></i></div>
+            <div  class='peg' id = "violet"><i class="fas fa-circle fa-3x"></i></div>
+        </div>
+    </div>
+
+</body>
+
+</html>
