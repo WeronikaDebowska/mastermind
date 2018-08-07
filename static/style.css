@@ -1,13 +1,9 @@
-/* body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Open Sans', sans-serif;
-    background-color: white;
-    word-wrap: break-word;
-    white-space: normal;
+ body, html {
+    background-color: #D3D3D3;
     
 }
 
+/*
 .container {
     width: 
     margin: 0 auto;
@@ -17,10 +13,10 @@
     width: 370px;
 }
 
-#gameboard {
+#decoding-board {
     
     margin: auto;
-    background-color: lightgrey;
+    background-color: #A9A9A9;
     /* border: black 3px;
     align-items: center;
     align-content: center;
@@ -31,7 +27,7 @@
 .column
 { 
     /* display: table-cell; */
-    background-color: #696969;
+    color: #808080;
 
     /* text-align: center; */
     /* border-radius: 15px;
@@ -54,26 +50,26 @@
 
 } */
 
-#red {
+#A {
     color: red;
 }
 
-#orange {
+#B {
     color: orange;
 }
 
-#yellow {
+#C {
     color: yellow;
 }
 
-#green {
+#D {
     color: green;
 }
 
-#blue {
+#E {
     color: blue;
 }
 
-#violet {
+#F {
     color: purple;
 }
