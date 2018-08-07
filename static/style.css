@@ -1,75 +1,72 @@
- body, html {
-    background-color: #D3D3D3;
-    
-}
+ body,
+ html {
+     background-color: #D3D3D3;
+ }
 
-/*
+ /*
 .container {
     width: 
     margin: 0 auto;
 } */
 
-.w-30 {
-    width: 370px;
-}
+ .container {
+     width: 400px;
+ }
 
-#decoding-board {
-    
-    margin: auto;
-    background-color: #A9A9A9;
-    /* border: black 3px;
+ #decoding-board {
+     margin: auto;
+     background-color: #A9A9A9;
+     /* border: black 3px;
     align-items: center;
     align-content: center;
     margin: auto; */
-}
+ }
 
-
-.column
-{ 
-    /* display: table-cell; */
-    color: #808080;
-
-    /* text-align: center; */
-    /* border-radius: 15px;
+ .column {
+     /* display: table-cell; */
+     color: #808080;
+     /* text-align: center; */
+     /* border-radius: 15px;
     width: 30px;
     height: 30px; */
-}
+ }
 
-#covered {
-    background-color: aqua;
+ #covered {
+     background-color: aqua;
+ }
 
-}
-
-/* #pegs-box {
+ /* #pegs-box {
     clear: both;
     width: 300px;
     border-spacing: 10px;
     align-items: center; */
-    /* align-content: center; */
-    /* margin: auto;
+
+ /* align-content: center; */
+
+ /* margin: auto;
 
 } */
 
-#A {
-    color: red;
-}
+ #A {
+     color: red;
+ }
 
-#B {
-    color: orange;
-}
+ #B {
+     color: orange;
+ }
 
-#C {
-    color: yellow;
-}
+ #C {
+     color: yellow;
+ }
 
-#D {
-    color: green;
-}
+ #D {
+     color: green;
+ }
 
-#E {
-    color: blue;
-}
+ #E {
+     color: blue;
+ }
 
-#F {
-    color: purple;
-}
+ #F {
+     color: purple;
+ }
