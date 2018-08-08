@@ -22,27 +22,25 @@
 
 <body id="body">
 
-    <div class="outer-container m-3">
-        <div id="fireworks">
-            <div class="before"></div>
-            <div class="after"></div>
-            <div id="gameboard">
-
-                <div class="container covered pb-2">
-                    <div class="row">
-                        <div class="col-10" id="covered-pegs">
-                            <div class="row">
-                                {% for n in range (1,5) %}
-                                <div class="col-3 column text-center p-2">
-                                    <i class="fas fa-question-circle fa-3x" id="0{{ n }}"></i>
+    <div id="fireworks">
+        <div class="before"></div>
+        <div class="after"></div>
+        <div class="outer">
+            <div class="middle">
+                <div class="inner">
+                    <div class="container covered pb-2 pl-0 pr-0">
+                        <div class="row">
+                            <div class="col-10" id="covered-pegs">
+                                <div class="row">
+                                    {% for n in range (1,5) %}
+                                    <div class="col-3 column text-center pb-2 pl-2 pr-2">
+                                        <i class="fas fa-question-circle fa-3x" id="0{{ n }}"></i>
+                                    </div>
+                                    {% endfor %}
                                 </div>
-                                {% endfor %}
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="container">
                     <div class="row">
                         <div class="col-10 pt-2 pb-2" id="decoding-board">
                             {% for i in range(10,0,-1) %}
@@ -105,6 +103,7 @@
 
             </div>
         </div>
+    </div>
     </div>
 
 
