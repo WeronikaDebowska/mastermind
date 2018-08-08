@@ -60,6 +60,19 @@ function drop(ev) {
     checkStatus()
 }
 
+function fireworks() {
+    let body = document.getElementsByTagName("body")[0];
+    let decodingBoard = document.getElementById("decoding-board");
+    let hints = document.getElementById("hints");
+    document.getElementById("fireworks").setAttribute("class", "pyro")
+    body.style.transition = "1s"
+    body.style.backgroundColor = "#333"
+    decodingBoard.style.transition = "1s"
+    decodingBoard.style.backgroundColor = "#555"
+    hints.style.transition = "1s"
+    hints.style.color = "#555"
+}
+
 function revealCode() {
     var coveredCode = Array.from(document.querySelectorAll("#covered-pegs > .row > .column > i"));
     var colors = {"A": "tomato",
@@ -89,6 +102,7 @@ function checkStatus() {
     console.log("CODE: ", code)
     if (winCondition()){
         revealCode()
+        fireworks()
         alert("You won!")
     }
     else if (guess.includes(0) == false){
@@ -111,6 +125,7 @@ function activateRow(Number) {
         circles.forEach( function(circle) {
             circle.setAttribute("ondrop", "drop(event)");
             circle.setAttribute("ondragover", "allowDrop(event)");
+            circle.style.color = "#eee";
         })
     })
 }

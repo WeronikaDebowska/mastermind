@@ -1,13 +1,6 @@
- body,
- html {
-     background-color: #D3D3D3;
+ body{
+     background-color: #ddd;
  }
-
- /*
-.container {
-    width: 
-    margin: 0 auto;
-} */
 
  .container {
      width: 400px;
@@ -19,12 +12,13 @@
 
  #decoding-board {
      margin: auto;
-     background-color: #A9A9A9;
-     /* border: black 3px;
-    align-items: center;
-    align-content: center;
-    margin: auto; */
+     background-color: #bbb;
+     border-radius: 24px;
  }
+
+ #hints {
+    color: #bbb;
+}
 
  .column {
      /* display: table-cell; */
@@ -33,10 +27,6 @@
      /* border-radius: 15px;
     width: 30px;
     height: 30px; */
- }
-
- #covered {
-     background-color: aqua;
  }
 
  /* #pegs-box {
@@ -50,27 +40,3 @@
  /* margin: auto;
 
 } */
-
- #A {
-     color: red;
- }
-
- #B {
-     color: orange;
- }
-
- #C {
-     color: yellow;
- }
-
- #D {
-     color: green;
- }
-
- #E {
-     color: blue;
- }
-
- #F {
-     color: purple;
- }

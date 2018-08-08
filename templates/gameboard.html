@@ -13,94 +13,97 @@
     <title>MasterMind</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fireworks.css') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
         crossorigin="anonymous">
-    
+
     <script src="{{ url_for('static', filename='script.js') }}" defer></script>
 </head>
 
-<body>
+<body id="body">
 
-    <div class="outer-container m-4">
-        <div id="gameboard">
+    <div class="outer-container m-3">
+        <div id="fireworks">
+            <div class="before"></div>
+            <div class="after"></div>
+            <div id="gameboard">
 
-            <div class="container covered pb-2" class="Row">
-                <div class="row">
-                    <div class="col-10" id="covered-pegs">
-                        <div class="row">
-                            {% for n in range (1,5) %}
-                            <div class="col-3 column text-center p-2">
-                                <i class="fas fa-question-circle fa-3x" id="0{{ n }}"></i>
-                            </div>
-                            {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="container">
-                <div class="row">
-                    <div class="col-10" id="decoding-board">
-                        {% for i in range(10,0,-1) %}
-                        <div class='row' id='{{ i }}'>
-                            {% for n in range (1,5) %}
-                            <div class="col-3 column text-center p-2">
-                                <i class="far fa-circle fa-3x" id="{{ i }}{{ n }}"></i>
-                            </div>
-                            {% endfor %}
-                        </div>
-                        {% endfor %}
-                    </div>
-
-                    <div class="col-2">
-                        {% for i in range(10,0,-1) %}
-                        <div class="row pt-2 pb-2">
-                            {% for i in range(1,3) %}
-                                {% for n in range(1,3) %}
-                                    <div class="col-6" id="response_{{ i }}{{ n }} ">
-                                        <i class="fas fa-circle fa-sx"></i>
-                                    </div>
+                <div class="container covered pb-2">
+                    <div class="row">
+                        <div class="col-10" id="covered-pegs">
+                            <div class="row">
+                                {% for n in range (1,5) %}
+                                <div class="col-3 column text-center p-2">
+                                    <i class="fas fa-question-circle fa-3x" id="0{{ n }}"></i>
+                                </div>
                                 {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-10 pt-2 pb-2" id="decoding-board">
+                            {% for i in range(10,0,-1) %}
+                            <div class='row' id='{{ i }}'>
+                                {% for n in range (1,5) %}
+                                <div class="col-3 column text-center p-2">
+                                    <i class="far fa-circle fa-3x" id="{{ i }}{{ n }}"></i>
+                                </div>
+                                {% endfor %}
+                            </div>
                             {% endfor %}
                         </div>
-                        {% endfor %}
-                    </div>
 
+                        <div class="col-2 pt-2 pb-2" id="hints">
+                            {% for i in range(10,0,-1) %}
+                            <div class="row pt-2 pb-2">
+                                {% for i in range(1,3) %} {% for n in range(1,3) %}
+                                <div class="col-6" id="response_{{ i }}{{ n }} ">
+                                    <i class="fas fa-circle fa-sx"></i>
+                                </div>
+                                {% endfor %} {% endfor %}
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                    <div class="row pt-3">
+                        <div class='col-2'>
+                            <i id="A" style="color:tomato;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i>
+                        </div>
+                        <div class='col-2'>
+                            <i id="B" style="color:orange;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i>
+                        </div>
+                        <div class='col-2'>
+                            <i id="C" style="color:yellow;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i>
+                        </div>
+                        <div class='col-2'>
+                            <i id="D" style="color:forestgreen;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i>
+                        </div>
+                        <div class='col-2'>
+                            <i id="E" style="color:dodgerblue;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i>
+                        </div>
+                        <div class='col-2'>
+                            <i id="F" style="color:slateblue;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="row pt-4">
-                    <div class='col-2'>
-                        <i id="A" style="color:tomato;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i>
-                    </div>
-                    <div class='col-2'>
-                        <i id="B" style="color:orange;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i>
-                    </div>
-                    <div class='col-2'>
-                        <i id="C" style="color:yellow;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i>
-                    </div>
-                    <div class='col-2'>
-                        <i id="D" style="color:forestgreen;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i>
-                    </div>
-                    <div class='col-2'>
-                        <i id="E" style="color:dodgerblue;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i>
-                    </div>
-                    <div class='col-2'>
-                        <i id="F" style="color:slateblue;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i>
-                    </div>
+
+                <div id='aside-board'>
                 </div>
+
+                <div id="preload">
+                    <img src="static/pegs/red.png" width="1" height="1" />
+                    <img src="static/pegs/orange.png" width="1" height="1" />
+                    <img src="static/pegs/yellow.png" width="1" height="1" />
+                    <img src="static/pegs/green.png" width="1" height="1" />
+                    <img src="static/pegs/blue.png" width="1" height="1" />
+                    <img src="static/pegs/purple.png" width="1" height="1" />
+                </div>
+
             </div>
-
-            <div id='aside-board'>
-            </div>
-
-            <div id="preload">
-                <img src="static/pegs/red.png" width="1" height="1"/>
-                <img src="static/pegs/orange.png" width="1" height="1"/>
-                <img src="static/pegs/yellow.png" width="1" height="1"/>
-                <img src="static/pegs/green.png" width="1" height="1"/>
-                <img src="static/pegs/blue.png" width="1" height="1"/>
-                <img src="static/pegs/purple.png" width="1" height="1"/>
-             </div>
-
         </div>
     </div>
 
