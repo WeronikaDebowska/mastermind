@@ -33,36 +33,39 @@
                             <div class="col-10" id="covered-pegs">
                                 <div class="row">
                                     {% for n in range (1,5) %}
-                                    <div class="col-3 column text-center pb-2 pl-2 pr-2">
-                                        <i class="fas fa-question-circle fa-3x" id="0{{ n }}"></i>
-                                    </div>
+                                        <div class="col-3 column text-center pb-2 pl-2 pr-2">
+                                            <i class="fas fa-question-circle fa-3x" id="0{{ n }}"></i>
+                                        </div>
                                     {% endfor %}
                                 </div>
+                            </div>
+                            <div class="col-2 text-right">
+                                <i class="fas fa-info-circle fa-2x" id="rules"></i>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-10 pt-2 pb-2" id="decoding-board">
                             {% for i in range(10,0,-1) %}
-                            <div class='row' id='{{ i }}'>
-                                {% for n in range (1,5) %}
-                                <div class="col-3 column text-center p-2">
-                                    <i class="far fa-circle fa-3x" id="{{ i }}{{ n }}"></i>
+                                <div class='row' id='{{ i }}'>
+                                    {% for n in range (1,5) %}
+                                        <div class="col-3 column text-center p-2">
+                                            <i class="far fa-circle fa-3x" id="{{ i }}{{ n }}"></i>
+                                        </div>
+                                    {% endfor %}
                                 </div>
-                                {% endfor %}
-                            </div>
                             {% endfor %}
                         </div>
 
                         <div class="col-2 pt-2 pb-2" id="hints">
                             {% for i in range(10,0,-1) %}
-                            <div class="row pt-2 pb-2">
-                                {% for j in range(1,5) %} 
-                                    <div class="col-6" id="response_{{ i }}{{ j }}" data-colored="false">
-                                        <i class="fas fa-circle fa-sx"></i>
-                                    </div>
-                                {% endfor %}
-                            </div>
+                                <div class="row pt-2 pb-2">
+                                    {% for j in range(1,5) %} 
+                                        <div class="col-6" id="response_{{ i }}{{ j }}" data-colored="false">
+                                            <i class="fas fa-circle fa-sx"></i>
+                                        </div>
+                                    {% endfor %}
+                                </div>
                             {% endfor %}
                         </div>
 

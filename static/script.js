@@ -175,6 +175,7 @@ function giveAHint() {
             code[index] = "X";
         }
     }
+
     for (let i = 0; i < 4; i++) {
         hint = hint.sort().reverse()
         hintPeg = document.getElementById("response_"+activeRow+(i+1))
@@ -183,6 +184,7 @@ function giveAHint() {
             hintPeg.dataset.colored = "true"
         }
     }
+    
     activeRow = activeRow + 1
     code = tempCode;
 }

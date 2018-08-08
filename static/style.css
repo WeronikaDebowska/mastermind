@@ -34,6 +34,20 @@
      color: #bbb;
  }
 
+ #rules {
+    transition: 0.1s;
+    color: #808080;
+    line-height: 48px;
+    transform: scale(1)
+ }
+
+ #rules:hover {
+    transition: 0.2s;
+    color: #fff;
+    transform: scale(1.33);
+    cursor: pointer;
+ }
+
  .column {
      /* display: table-cell; */
      color: #808080;
