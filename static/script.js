@@ -1,7 +1,17 @@
 var numberOfRowsCompleted = 0;
-var guessing = [0,0,0,0]
-var code = [1,2,4,6]
+var guess = [0,0,0,0]
+var code = []
+
+generateCode()
 activateRow(1)
+
+function generateCode(){
+    let pegs = ["A","B","C","D","E","F"]
+    for (let i = 0; i < 4; i++){
+        let randomIndex = Math.floor(Math.random()*pegs.length)
+        code.push(pegs[randomIndex]);
+    }
+}
 
 function allowDrop(ev) {
     ev.preventDefault();
@@ -41,24 +51,54 @@ function drop(ev) {
     var pegDragged = document.getElementById(idOfPegDragged);
     var colorDragged = pegDragged.style.color;
     
-    var guess = ev.target;  //state after peg drop
-    guess.style.color = colorDragged;
-    guess.className = "fas fa-circle fa-3x";
+    var guessPeg = ev.target;  //state after peg drop
+    guessPeg.style.color = colorDragged;
+    guessPeg.className = "fas fa-circle fa-3x";
     
-    var index = Number(guess.id.slice(-1))-1;
-    guessing[index] = idOfPegDragged;
+    var index = Number(guessPeg.id.slice(-1))-1;
+    guess[index] = idOfPegDragged;
     checkStatus()
 }
 
+function revealCode() {
+    var coveredCode = Array.from(document.querySelectorAll("#covered-pegs > .row > .column > i"));
+    var colors = {"A": "tomato",
+                  "B": "orange",
+                  "C": "yellow",
+                  "D": "forestgreen",
+                  "E": "dodgerblue",
+                  "F": "slateblue"}
+    for(let i = 0; i < coveredCode.length; i++) {
+        coveredCode[i].style.color = colors[code[i]]
+        coveredCode[i].className = "fas fa-check-circle fa-3x";
+    }
+}
+
+function winCondition() {
+    if(guess.length !== code.length)
+        return false;
+    for(let i = guess.length; i--;) {
+        if(guess[i] !== code[i])
+            return false;
+    }
+    return true;
+}
+
 function checkStatus() {
-    if (guessing.includes(0) == false){
+    console.log("GUESS: ", guess)
+    console.log("CODE: ", code)
+    if (winCondition()){
+        revealCode()
+        alert("You won!")
+    }
+    else if (guess.includes(0) == false){
         numberOfRowsCompleted += 1;
         let numberOfrowToActivate = numberOfRowsCompleted + 1;
         activateRow(numberOfrowToActivate);
         if (numberOfRowsCompleted > 0){
             deactivateRow(numberOfRowsCompleted);
         }
-        guessing = [0,0,0,0]
+        guess = [0,0,0,0]
     }
 }
 
