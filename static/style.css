@@ -13,6 +13,10 @@
      width: 400px;
  }
 
+#preload {
+    display: none;
+}
+
  #decoding-board {
      margin: auto;
      background-color: #A9A9A9;

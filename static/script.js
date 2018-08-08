@@ -9,6 +9,29 @@ function allowDrop(ev) {
 
 function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
+    var idOfPegDragged = ev.dataTransfer.getData("text");
+    var img = new Image();
+    switch (idOfPegDragged){
+        case "A":
+            img.src = "static/pegs/red.png"; 
+            break;
+        case "B":
+            img.src = "static/pegs/orange.png"; 
+            break;
+        case "C":
+            img.src = "static/pegs/yellow.png"; 
+            break;
+        case "D":
+            img.src = "static/pegs/green.png"; 
+            break;
+        case "E":
+            img.src = "static/pegs/blue.png"; 
+            break;
+        case "F":
+            img.src = "static/pegs/purple.png"; 
+            break;
+    }
+    ev.dataTransfer.setDragImage(img, 24, 24);
 }
 
 function drop(ev) {
@@ -24,7 +47,6 @@ function drop(ev) {
     
     var index = Number(guess.id.slice(-1))-1;
     guessing[index] = idOfPegDragged;
-    console.log(guessing);
     checkStatus()
 }
 
@@ -54,9 +76,7 @@ function activateRow(Number) {
 }
 
 function deactivateRow(Number) {
-    console.log(Number)
     let rowToActivate = document.getElementById(Number);
-    console.log('TU',rowToActivate);
     let holesToActivate = rowToActivate.children;
     let arrayOfHoles = Array.from(holesToActivate);
     arrayOfHoles.forEach( function (hole){
