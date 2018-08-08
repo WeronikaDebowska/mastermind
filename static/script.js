@@ -1,6 +1,8 @@
 var numberOfRowsCompleted = 0;
 var guess = [0,0,0,0]
 var code = []
+var tempCode = []
+var hint = [0,0,0,0]
 
 generateCode()
 activateRow(1)
@@ -98,14 +100,13 @@ function winCondition() {
 }
 
 function checkStatus() {
-    console.log("GUESS: ", guess)
-    console.log("CODE: ", code)
     if (winCondition()){
         revealCode()
         fireworks()
         alert("You won!")
     }
     else if (guess.includes(0) == false){
+        giveAHint(); 
         numberOfRowsCompleted += 1;
         let numberOfrowToActivate = numberOfRowsCompleted + 1;
         activateRow(numberOfrowToActivate);
@@ -113,6 +114,7 @@ function checkStatus() {
             deactivateRow(numberOfRowsCompleted);
         }
         guess = [0,0,0,0]
+        hint=[0,0,0,0]
     }
 }
 
@@ -142,3 +144,22 @@ function deactivateRow(Number) {
         })
     })
 }
+
+function giveAHint() {
+    tempCode =  Array.from(code);
+    for (let i=0; i < guess.length; i++ ){
+        if (guess[i] === code[i]){
+            hint[i]=2;
+            code[i]="X";
+        }
+    }
+    
+    for (let i=0; i < guess.length; i++ ){
+        if (code.includes(guess[i]) && hint[i] != 2){
+            hint[i]=1;
+            let index = code.indexOf(guess[i]);
+            code[index]="X";
+        } 
+    }
+    code = tempCode;
+} 
