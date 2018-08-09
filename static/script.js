@@ -125,9 +125,20 @@ function won() {
 
 function lost() {
     let body = document.getElementsByTagName("body")[0];
+    let decodingBoard = document.getElementById("decoding-board");
+    let hintPegs = Array.from(document.querySelectorAll("#hints > .row > div"));
     document.getElementById("buttons").innerHTML = "<i class='fas fa-sync-alt fa-2x' id='refresh' onClick='window.location.reload()'></i>"
     body.style.transition = "1s"
-    body.style.backgroundColor = "#EC8484"
+    body.style.backgroundColor = "#333"
+    decodingBoard.style.transition = "1s"
+    decodingBoard.style.backgroundColor = "#555"
+
+    hintPegs.forEach(function (hintPeg) {
+        if (hintPeg.dataset.colored == "false") {
+            hintPeg.style.transition = "1s"
+            hintPeg.style.color = "#555"
+        }
+    })
     revealCode()
     console.log("You lost!")
 }
