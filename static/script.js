@@ -93,7 +93,11 @@ function revealCode() {
     }
     for (let i = 0; i < coveredCode.length; i++) {
         coveredCode[i].style.color = colors[code[i]]
-        coveredCode[i].className = "fas fa-check-circle fa-3x";
+        if (code[i] == guess[i]){
+            coveredCode[i].className = "fas fa-check-circle fa-3x";
+        } else {
+            coveredCode[i].className = "fas fa-times-circle fa-3x";
+        }
     }
 }
 
