@@ -67,7 +67,10 @@ function fireworks() {
     let body = document.getElementsByTagName("body")[0];
     let decodingBoard = document.getElementById("decoding-board");
     let hintPegs = Array.from(document.querySelectorAll("#hints > .row > div"));
+    let title = document.getElementById('title')
     document.getElementById("fireworks").setAttribute("class", "pyro")
+    title.style.transition = "1s"
+    title.style.color = "#fff"
     body.style.transition = "1s"
     body.style.backgroundColor = "#333"
     decodingBoard.style.transition = "1s"

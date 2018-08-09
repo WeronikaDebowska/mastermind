@@ -1,3 +1,13 @@
+@font-face {
+    font-family: Nexa Bold;
+    src: url(fonts/nexa_bold.otf);
+}
+
+@font-face {
+    font-family: Nexa Light;
+    src: url(fonts/nexa_light.otf);
+}
+ 
  body {
      background-color: #ddd;
  }
@@ -15,6 +25,7 @@
   }
   
   .inner {
+    
     margin-left: auto;
     margin-right: auto;
     width: 400px;
@@ -68,3 +79,23 @@
  /* margin: auto;
 
 } */
+
+#title {
+    color: white;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    font-family: Nexa Light;
+    letter-spacing: 2px;
+    color: #000000;
+ 
+}
+
+.nexa-bold {
+    font-family: Nexa Bold;    
+}
+
+.container covered {
+    display: inline;
+}
+
