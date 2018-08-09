@@ -74,7 +74,7 @@ function fireworks() {
     decodingBoard.style.backgroundColor = "#555"
 
     hintPegs.forEach(function (hintPeg) {
-        if (hintPeg.dataset.colored == "false"){
+        if (hintPeg.dataset.colored == "false") {
             hintPeg.style.transition = "1s"
             hintPeg.style.color = "#555"
         }
@@ -107,22 +107,34 @@ function winCondition() {
     return true;
 }
 
+function won() {
+    document.getElementById("buttons").innerHTML = "<i class='fas fa-sync-alt fa-2x' id='refresh' onClick='window.location.reload()'></i>"
+    for (let i = 0; i < 4; i++) {
+        hintPeg = document.getElementById("response_" + (activeRow) + (i + 1))
+        hintPeg.style.color = "#111"
+        hintPeg.dataset.colored = "true"
+    }
+    revealCode()
+    fireworks()
+    console.log("You won!")
+}
+
+function lost() {
+    let body = document.getElementsByTagName("body")[0];
+    document.getElementById("buttons").innerHTML = "<i class='fas fa-sync-alt fa-2x' id='refresh' onClick='window.location.reload()'></i>"
+    body.style.transition = "1s"
+    body.style.backgroundColor = "#EC8484"
+    revealCode()
+    console.log("You lost!")
+}
+
 function checkStatus() {
-    console.log(code)
     if (winCondition()) {
-        revealCode()
-        fireworks()
-        console.log("You won!")
-    } else if (guess.includes(0) == false) {
+        won()
+    } else if (guess.includes(0) == false && activeRow < 10) {
         giveAHint();
-        numberOfRowsCompleted += 1;
-        let numberOfrowToActivate = numberOfRowsCompleted + 1;
-        activateRow(numberOfrowToActivate);
-        if (numberOfRowsCompleted > 0) {
-            deactivateRow(numberOfRowsCompleted);
-        }
-        guess = [0, 0, 0, 0]
-        hint = [0, 0, 0, 0]
+    } else if (guess.includes(0) == false && activeRow == 10) {
+        lost()
     }
 }
 
@@ -178,13 +190,23 @@ function giveAHint() {
 
     for (let i = 0; i < 4; i++) {
         hint = hint.sort().reverse()
-        hintPeg = document.getElementById("response_"+activeRow+(i+1))
+        hintPeg = document.getElementById("response_" + activeRow + (i + 1))
         hintPeg.style.color = colors[hint[i]]
-        if (hint[i] != "0"){
+        if (hint[i] != "0") {
             hintPeg.dataset.colored = "true"
         }
     }
-    
-    activeRow = activeRow + 1
+
+    activeRow += 1
     code = tempCode;
+    numberOfRowsCompleted += 1;
+
+    let numberOfrowToActivate = numberOfRowsCompleted + 1;
+    activateRow(numberOfrowToActivate);
+    if (numberOfRowsCompleted > 0) {
+        deactivateRow(numberOfRowsCompleted);
+    }
+
+    guess = [0, 0, 0, 0]
+    hint = [0, 0, 0, 0]
 }
