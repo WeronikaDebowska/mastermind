@@ -7,73 +7,160 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
+
+    
 
     <title>MasterMind</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='fireworks.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+      
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
 </head>
 
-<body>
+<body id="body">
 
-    <div class="outer-container">
-        <div id="gameboard">
-        
-            <div class="covered" class="Row">
+    <div id="title" p-4>
+        <h3><span class="nexa-bold">MASTER</span>MIND</h3>    
+    </div>
 
-            </div>
-            <div class="container w-30">
-                <div class="row">
-                    <div class="col-10 rounded" id="decoding-board">
-                        {% for i in range(10,0,-1) %}
-                        <div class='row' id='{{ i }}'>
-                            {% for n in range (1,5) %}
-                                <div  class="col-3 column text-center p-2">
-                                    <i class="far fa-circle fa-3x" id = "{{ i }}{{ n }}"></i>
+    <div class="cheat" onmousemove="cheat()" onmouseout="stopCheating()"></div>
+
+    <div id="fireworks">
+        <div class="before"></div>
+        <div class="after"></div>
+        <div class="outer">
+            <div class="middle">
+                    
+                <div class="inner">                 
+                    
+                    <div class="container covered pb-2 pl-0 pr-0">
+                        <div class="row">
+                            <div class="col-10" id="covered-pegs">
+                                <div class="row">
+                                    {% for n in range (1,5) %}
+                                        <div class="col-3 column text-center pb-2 pl-2 pr-2">
+                                            <i class="fas fa-question-circle fa-3x" id="0{{ n }}"></i>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div id="buttons" class="col-2 text-right">
+                                <i class="fas fa-info-circle fa-2x" id="rules" data-toggle="modal" data-target="#rulesModal"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-10 pt-2 pb-2" id="decoding-board">
+                            {% for i in range(10,0,-1) %}
+                                <div class='row' id='{{ i }}'>
+                                    {% for n in range (1,5) %}
+                                        <div class="col-3 column text-center p-2">
+                                            <i class="far fa-circle fa-3x" id="{{ i }}{{ n }}"></i>
+                                        </div>
+                                    {% endfor %}
                                 </div>
                             {% endfor %}
                         </div>
-                        {% endfor %}
-                    </div>
 
-                    <div class="col-2">
-                        {% for i in range(10,0,-1) %}
-                        <div class="row pt-2 pb-2">
-                            {% for i in range(1,3) %}
-                                <!-- <div class="row pt-2"> -->
-                                    {% for n in range(1,3) %}
-                                    <div class="col-6" id = "response_{{ i }}{{ n }} "><i class="fas fa-circle fa-sx"></i></div>
+                        <div class="col-2 pt-2 pb-2" id="hints">
+                            {% for i in range(10,0,-1) %}
+                                <div class="row pt-2 pb-2">
+                                    {% for j in range(1,5) %} 
+                                        <div class="col-6" id="response_{{ i }}{{ j }}" data-colored="false">
+                                            <i class="fas fa-circle fa-sx"></i>
+                                        </div>
                                     {% endfor %}
-                                <!-- </div> -->
+                                </div>
                             {% endfor %}
                         </div>
-                        {% endfor %}
 
-                        
                     </div>
-
-
+                    <div class="row pt-3">
+                        <div class='col-2'>
+                            <i id="A" style="color:tomato;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i>
+                        </div>
+                        <div class='col-2'>
+                            <i id="B" style="color:orange;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i>
+                        </div>
+                        <div class='col-2'>
+                            <i id="C" style="color:yellow;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i>
+                        </div>
+                        <div class='col-2'>
+                            <i id="D" style="color:forestgreen;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i>
+                        </div>
+                        <div class='col-2'>
+                            <i id="E" style="color:dodgerblue;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i>
+                        </div>
+                        <div class='col-2'>
+                            <i id="F" style="color:slateblue;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i>
+                        </div>
+                    </div>
                 </div>
-                <div class="row pt-4">
-                        <div  class='col-2'><i id ="A" style="color:Tomato;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i></div>
-                        <div  class='col-2'><i id ="B" style="color:Orange;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i></div>
-                        <div  class='col-2'><i id ="C" style="color:Yellow;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i></div>
-                        <div  class='col-2'><i id = "D" style="color:green;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i></div>
-                        <div  class='col-2'><i id = "E" style="color:dodgerblue;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i></div>
-                        <div  class='col-2'><i id ="F" style="color:slateblue;" class="fas fa-circle fa-3x" draggable="true" ondragstart="drag(event)"></i></div>
+
+                <div id='aside-board'>
                 </div>
 
-                    
+                <div id="preload">
+                    <img src="static/pegs/red.png" width="1" height="1" />
+                    <img src="static/pegs/orange.png" width="1" height="1" />
+                    <img src="static/pegs/yellow.png" width="1" height="1" />
+                    <img src="static/pegs/green.png" width="1" height="1" />
+                    <img src="static/pegs/blue.png" width="1" height="1" />
+                    <img src="static/pegs/purple.png" width="1" height="1" />
+                </div>
             </div>
-
-            <div id='aside-board'>
-
-            </div>
-
         </div>
     </div>
-    <script src="{{ url_for('static', filename='script.js') }}"></script> 
+
+    <div class="modal fade" id="rulesModal" tabindex="-1" role="dialog" aria-labelledby="rulesModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content bg-light">
+            <div class="modal-header">
+              <h5 class="modal-title" id="rulesModalTitle">Mastermind Rules</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi aliquid adipisci quisquam cum earum veniam, possimus necessitatibus ex error eveniet ipsum recusandae pariatur optio quo officia reprehenderit ad sit vel itaque quia odio tempora tenetur? Magni eaque, ad ea dicta consectetur amet voluptate illum? Sunt eaque qui hic corrupti dicta maiores possimus vero dolorum unde magnam, reiciendis, optio voluptatem. Illum porro pariatur consectetur soluta optio maxime modi alias repellendus, ut sunt possimus. Voluptatem nemo quisquam officiis voluptas omnis, earum beatae quod enim et laborum veritatis at, quae neque fugit dolores culpa fuga atque! Labore sapiente nisi ipsum fugit optio provident.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="modal fade" id="rulesModal" tabindex="-1" role="dialog" aria-labelledby="rulesModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content bg-light">
+            <div class="modal-header">
+              <h5 class="modal-title" id="rulesModalTitle"><span class="nexa-bold">Mastermind Rules</span></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-center nexa-light">
+            
+                <div class="mb-4"><span class="nexa-bold"> Try to break the code!</span></div>
+                <div class="mb-4">Choose 4 color pegs in one row. Try to guess the hidden code. </div>
+                <div class="mb-4"><span class="nexa-bold">HINTS: </span>
+                    <div>white peg = correct color, wrong position </div>
+                    <div>black peg = correct color, correct position </div>
+                </div>
+                <div><span class="nexa-bold">GOOD LUCK!</span></div>
+              
+          </div>
+        </div>
+      </div>
+      
+
 </body>
 
 </html>

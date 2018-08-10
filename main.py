@@ -6,6 +6,10 @@ app = Flask('master_mind')
 def index():
     return render_template('gameboard.html')
 
+@app.route('/demo')
+def demo():
+    return render_template('demo.html')
+
 
 def main():
     app.run(debug=True)

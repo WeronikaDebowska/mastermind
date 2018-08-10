@@ -1,75 +1,156 @@
- body, html {
-    background-color: #D3D3D3;
+@font-face {
+    font-family: Nexa Bold;
+    src: url(fonts/nexa_bold.otf);
+}
+
+@font-face {
+    font-family: Nexa Light;
+    src: url(fonts/nexa_light.otf);
+}
+ 
+ body {
+     background-color: #ddd;
+ }
+
+ .outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .middle {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  
+  .inner {
     
-}
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+  }
 
-/*
-.container {
-    width: 
-    margin: 0 auto;
-} */
+ #preload {
+     display: none;
+ }
 
-.w-30 {
-    width: 370px;
-}
+ #decoding-board {
+     margin: auto;
+     background-color: #bbb;
+     border-radius: 24px;
+ }
 
-#decoding-board {
-    
-    margin: auto;
-    background-color: #A9A9A9;
-    /* border: black 3px;
-    align-items: center;
-    align-content: center;
-    margin: auto; */
-}
+ #hints {
+     color: #bbb;
+ }
 
-
-.column
-{ 
-    /* display: table-cell; */
+ #rules {
+    transition: 0.1s;
     color: #808080;
+    line-height: 48px;
+    transform: scale(1)
+ }
 
-    /* text-align: center; */
-    /* border-radius: 15px;
+ #rules:hover {
+    transition: 0.2s;
+    color: #fff;
+    transform: scale(1.33);
+    cursor: pointer;
+ }
+
+ #refresh {
+    transition: 0.1s;
+    color: #808080;
+    line-height: 48px;
+    transform: scale(1)
+ }
+
+ #refresh:hover {
+    transition: 0.2s;
+    color: #fff;
+    transform: scale(1.33);
+    cursor: pointer;
+ }
+
+ .column {
+     /* display: table-cell; */
+     color: #808080;
+     /* text-align: center; */
+     /* border-radius: 15px;
     width: 30px;
     height: 30px; */
-}
+ }
 
-#covered {
-    background-color: aqua;
-
-}
-
-/* #pegs-box {
+ /* #pegs-box {
     clear: both;
     width: 300px;
     border-spacing: 10px;
     align-items: center; */
-    /* align-content: center; */
-    /* margin: auto;
+
+ /* align-content: center; */
+
+ /* margin: auto;
 
 } */
 
-#A {
-    color: red;
+#title {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    font-family: Nexa Light;
+    letter-spacing: 2px;
+    color: #000000;
+ 
 }
 
-#B {
-    color: orange;
+#title-1 {
+    position: absolute;
+    top: 60px;
+    font-family: Nexa Light;
+    letter-spacing: 2px;
+    color: #000000;
+ 
 }
 
-#C {
-    color: yellow;
+.nexa-bold {
+    font-family: Nexa Bold;    
 }
 
-#D {
-    color: green;
+.nexa-light {
+    font-family: Nexa Light;    
 }
 
-#E {
-    color: blue;
+.container covered {
+    display: inline;
 }
 
-#F {
-    color: purple;
+.text{
+    font-size: 180%;
+}
+/* 
+div < a:hover {
+    font-size: 120%;
+} */
+
+.demo{
+    transition: 0.2s
+}
+
+.demo:hover{
+    transition: 0.2s;
+    font-size: 120%;
+}
+
+.modal-dialog {
+    width: 1500px;
+}
+
+.cheat {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100px;
+    height: 100px;
+    z-index: 100;
 }
