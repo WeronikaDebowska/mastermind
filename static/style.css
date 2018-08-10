@@ -95,10 +95,18 @@
 } */
 
 #title {
-    color: white;
     position: absolute;
     left: 20px;
     top: 20px;
+    font-family: Nexa Light;
+    letter-spacing: 2px;
+    color: #000000;
+ 
+}
+
+#title-1 {
+    position: absolute;
+    top: 60px;
     font-family: Nexa Light;
     letter-spacing: 2px;
     color: #000000;
@@ -109,7 +117,40 @@
     font-family: Nexa Bold;    
 }
 
+.nexa-light {
+    font-family: Nexa Light;    
+}
+
 .container covered {
     display: inline;
 }
 
+.text{
+    font-size: 180%;
+}
+/* 
+div < a:hover {
+    font-size: 120%;
+} */
+
+.demo{
+    transition: 0.2s
+}
+
+.demo:hover{
+    transition: 0.2s;
+    font-size: 120%;
+}
+
+.modal-dialog {
+    width: 1500px;
+}
+
+.cheat {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100px;
+    height: 100px;
+    z-index: 100;
+}

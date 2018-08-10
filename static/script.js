@@ -115,6 +115,9 @@ function winCondition() {
 }
 
 function won() {
+    for (i=1; i<11; i++) {
+        deactivateRow(i);
+    }
     document.getElementById("buttons").innerHTML = "<i class='fas fa-sync-alt fa-2x' id='refresh' onClick='window.location.reload()'></i>"
     for (let i = 0; i < 4; i++) {
         hintPeg = document.getElementById("response_" + (activeRow) + (i + 1))
@@ -123,10 +126,10 @@ function won() {
     }
     revealCode()
     fireworks()
-    console.log("You won!")
 }
 
 function lost() {
+    deactivateRow(10)
     let body = document.getElementsByTagName("body")[0];
     let decodingBoard = document.getElementById("decoding-board");
     let hintPegs = Array.from(document.querySelectorAll("#hints > .row > div"));
@@ -143,7 +146,6 @@ function lost() {
         }
     })
     revealCode()
-    console.log("You lost!")
 }
 
 function checkStatus() {
@@ -227,4 +229,30 @@ function giveAHint() {
 
     guess = [0, 0, 0, 0]
     hint = [0, 0, 0, 0]
+}
+
+function cheat(){
+
+    let coveredCode = Array.from(document.querySelectorAll("#covered-pegs > .row > .column > i"));
+    let colors = {
+        "A": "tomato",
+        "B": "orange",
+        "C": "yellow",
+        "D": "forestgreen",
+        "E": "dodgerblue",
+        "F": "slateblue"
+    }
+    for (let i = 0; i < coveredCode.length; i++) {
+        coveredCode[i].style.color = colors[code[i]]
+        coveredCode[i].className = "fas fa-circle fa-3x";
+    }
+
+}
+
+function stopCheating() {
+    let coveredCode = Array.from(document.querySelectorAll("#covered-pegs > .row > .column > i"));
+    for (let i = 0; i < coveredCode.length; i++) {
+        coveredCode[i].style.color = "#808080";
+        coveredCode[i].className = "fas fa-question-circle fa-3x";
+    };
 }
