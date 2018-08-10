@@ -115,9 +115,12 @@ function winCondition() {
 }
 
 function won() {
+<<<<<<< HEAD
     for (i=1; i<11; i++) {
         deactivateRow(i);
     }
+=======
+>>>>>>> 28fef6865f4134b431a0643db8639ab22d836125
     document.getElementById("buttons").innerHTML = "<i class='fas fa-sync-alt fa-2x' id='refresh' onClick='window.location.reload()'></i>"
     for (let i = 0; i < 4; i++) {
         hintPeg = document.getElementById("response_" + (activeRow) + (i + 1))
@@ -126,10 +129,17 @@ function won() {
     }
     revealCode()
     fireworks()
+<<<<<<< HEAD
 }
 
 function lost() {
     deactivateRow(10)
+=======
+    console.log("You won!")
+}
+
+function lost() {
+>>>>>>> 28fef6865f4134b431a0643db8639ab22d836125
     let body = document.getElementsByTagName("body")[0];
     let decodingBoard = document.getElementById("decoding-board");
     let hintPegs = Array.from(document.querySelectorAll("#hints > .row > div"));
@@ -146,6 +156,10 @@ function lost() {
         }
     })
     revealCode()
+<<<<<<< HEAD
+=======
+    console.log("You lost!")
+>>>>>>> 28fef6865f4134b431a0643db8639ab22d836125
 }
 
 function checkStatus() {
@@ -229,6 +243,7 @@ function giveAHint() {
 
     guess = [0, 0, 0, 0]
     hint = [0, 0, 0, 0]
+<<<<<<< HEAD
 }
 
 function cheat(){
@@ -256,3 +271,6 @@ function stopCheating() {
         coveredCode[i].className = "fas fa-question-circle fa-3x";
     };
 }
+=======
+}
+>>>>>>> 28fef6865f4134b431a0643db8639ab22d836125
